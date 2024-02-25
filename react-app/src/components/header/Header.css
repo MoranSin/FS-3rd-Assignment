@@ -1,0 +1,18 @@
+header{
+    margin-top: 0px;
+    width: 100%;
+    height: 360px;
+    background: rgba(16, 0, 51, 0.8);
+    display: flex;
+    justify-content: center;
+}
+
+header>div{
+    font-family: Judson;
+    display: flex;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 57px;
+
+}
