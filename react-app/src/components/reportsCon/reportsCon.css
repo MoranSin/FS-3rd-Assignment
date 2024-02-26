@@ -6,8 +6,6 @@
     position: relative;
     left: 175px;
     display: flex;
-    justify-content: center;
-    display: flex;
     flex-direction: column;
 }
 
@@ -18,7 +16,7 @@
     flex-direction: row;
     justify-content: space-around;
     position: relative;
-    top: 10px;
+    top: 5px;
 }
 
 .label{

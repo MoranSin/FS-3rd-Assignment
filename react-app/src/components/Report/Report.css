@@ -4,8 +4,9 @@
     width: 80vw;
     position: relative;
     justify-content: space-around;
-    top: 50px;
+    top: 10px;
     height: fit-content;
+    border-bottom: 1px solid #150042;
 }
 
 .report>div{
