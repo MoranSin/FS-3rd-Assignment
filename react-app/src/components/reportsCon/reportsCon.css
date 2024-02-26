@@ -1,0 +1,25 @@
+.reportsCon{
+    width: 80vw;
+    height: 50vh;
+    background-color: rgba(25, 8, 131, 0.2);
+    border-radius: 25px;
+    position: relative;
+    left: 175px;
+    display: flex;
+    justify-content: center;
+}
+
+.labelsCon{
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    top: 10px;
+}
+
+.label{
+    font-size: 20px;
+    font-weight: bold;
+    color: #150042;
+}
