@@ -9,7 +9,7 @@ header{
 
 header>div{
     font-family: Judson;
-    display: flex;
+    /*display: flex;*/
     color: #fff;
     font-size: 50px;
     font-weight: bold;

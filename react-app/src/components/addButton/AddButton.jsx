@@ -1,11 +1,13 @@
 import React , { Component } from 'react';
 import '../ButtonList/crudButton.css'
 import addIcon from '../../assets/addIcon.png'
+import './createForm.css'
 
 import { Button, Form } from 'semantic-ui-react'
 
 
 const Create = () => (
+    <div className="formCon">
     <Form>
         <Form.Field>
             <label>Name</label>
@@ -25,6 +27,7 @@ const Create = () => (
         </Form.Field>
         <Button type='submit'>Submit</Button>
     </Form>
+    </div>
 )
 class AddButton extends Component {
     constructor(props) {
@@ -33,7 +36,7 @@ class AddButton extends Component {
         this.create = this.create.bind(this)
     }
 
-    create() { this.setState({open: true}) }
+    create() { this.setState(prevState => ({open: !prevState.open})) }
     render() {
         return (
         <div>
