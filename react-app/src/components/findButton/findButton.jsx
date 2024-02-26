@@ -4,7 +4,7 @@ import findIcon from "../../assets/findIcon.png";
 
 class findButton extends Component {
     render() {
-        return <button className="crudButton"><img src={findIcon}/></button>;
+        return <button className="crudButton btn"><img src={findIcon}/></button>;
     }
 }
 

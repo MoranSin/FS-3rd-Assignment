@@ -5,7 +5,7 @@ import addIcon from '../../assets/addIcon.png'
 class AddButton extends Component {
     render() {
         return (
-        <button className="crudButton"><img src={addIcon}/></button>
+        <button className="crudButton btn"><img src={addIcon}/></button>
         )
     }
 }

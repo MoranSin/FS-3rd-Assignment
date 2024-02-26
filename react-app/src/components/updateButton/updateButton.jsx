@@ -4,7 +4,7 @@ import updateIcon from "../../assets/updateIcon.png";
 
 class UpdateButton extends Component {
     render() {
-        return <button className="crudButton"><img src={updateIcon}/></button>;
+        return <button className="crudButton btn"><img src={updateIcon}/></button>;
     }
 }
 

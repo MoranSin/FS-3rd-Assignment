@@ -5,7 +5,7 @@ import deleteIcon from '../../assets/deleteIcon.png'
 class DeleteButton extends Component {
     render() {
         return (
-        <button className="crudButton"><img src={deleteIcon}/></button>
+        <button className="crudButton btn"><img src={deleteIcon}/></button>
         )
     }
 }
