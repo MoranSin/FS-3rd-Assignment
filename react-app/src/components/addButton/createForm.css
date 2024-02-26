@@ -3,5 +3,10 @@
     flex-direction: row;
     width: 80vw;
     position: absolute;
-    top: 50px;
+    top: 175px;
+}
+
+.form{
+    display: flex;
+    flex-direction: row;
 }

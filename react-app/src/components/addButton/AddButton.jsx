@@ -8,7 +8,7 @@ import { Button, Form } from 'semantic-ui-react'
 
 const Create = () => (
     <div className="formCon">
-    <Form>
+    <Form className="form">
         <Form.Field>
             <label>Name</label>
             <input placeholder='Name' />
