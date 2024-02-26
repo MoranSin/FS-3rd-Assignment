@@ -6,10 +6,6 @@ const http = axios.create({
 
 class ReportsService {
 
-    state = {
-        reports: []
-    };
-
     getReport(id) {
         return http.get(`/reports/${id}`);
     }
@@ -27,8 +23,7 @@ class ReportsService {
     }
 
     getReports() {
-        return http.get("/reports").then(response => {this.setState({ reports:response.data})
-        });
+        return http.get("/reports");
     }
 }
 
