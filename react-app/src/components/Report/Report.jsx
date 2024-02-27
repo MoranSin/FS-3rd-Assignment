@@ -1,15 +1,16 @@
 import React , { Component } from "react";
 import './Report.css';
+import { Table } from 'semantic-ui-react'
 
 class Report extends Component {
     render() {
     return (
-      <div className="report">
-          <div className="name">Earthquake</div>
-          <div className="location">Japan</div>
-          <div className="deathCount">1456</div>
-          <div className="damage">big</div>
-      </div>
+      <Table.Row>
+          <Table.Cell className="name">Earthquake</Table.Cell>
+          <Table.Cell className="location">Japan</Table.Cell>
+          <Table.Cell className="deathCount">1456</Table.Cell>
+          <Table.Cell className="damage">big</Table.Cell>
+      </Table.Row>
     );
   }
 }

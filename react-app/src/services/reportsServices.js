@@ -10,7 +10,7 @@ class ReportsService {
         return http.get(`/reports/${id}`);
     }
 
-    createReport(data) {
+    createReport = (data) => {
         return http.post("/reports", data);
     }
 
