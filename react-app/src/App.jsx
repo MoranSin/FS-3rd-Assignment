@@ -10,7 +10,8 @@ import Report from "./components/Report/Report.jsx";
 import './components/reportsCon/reportsCon.css'
 import deleteButton from "./components/deleteButton/deleteButton.jsx";
 import updateButton from "./components/updateButton/updateButton.jsx";
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter } from 'react-router-dom';
+import UpdateReport from "./components/updateButton/update.jsx";
 
 function App() {
 const [reports, setReports] = useState([])
@@ -22,9 +23,9 @@ useEffect(() => {
   })
 }, [])
 
-    const setReport = (data) => {
-        let { _id, name, location, deathCount, damage } = data;
-        localStorage.setItem('_id', _id);
+    const setReport = (id,data) => {
+        let { name, location, deathCount, damage } = data;
+        localStorage.setItem('_id', id);
         localStorage.setItem('name', name);
         localStorage.setItem('location', location);
         localStorage.setItem('deathCount', deathCount);
@@ -41,6 +42,7 @@ useEffect(() => {
 
   return (
     <>
+        <BrowserRouter>
         <Header />
         <ButtonList />
         <div className="reportsCon">
@@ -67,9 +69,11 @@ useEffect(() => {
                                     <Table.Cell className="location">{report.location}</Table.Cell>
                                     <Table.Cell className="deathCount">{report.deathCount}</Table.Cell>
                                     <Table.Cell className="damage">{report.damage}</Table.Cell>
+                                    <Link to="/update">
                                     <Table.Cell className="update">
-                                        <button onClick={()=>setReport(report)}>update</button>
+                                        <button onClick={()=>setReport(report._id,report)}>update</button>
                                     </Table.Cell>
+                                    </Link>
                                     <Table.Cell onClick={() => onDelete(report._id)} className="delete"><button>delete</button></Table.Cell>
                                 </Table.Row>
                             )
@@ -78,6 +82,7 @@ useEffect(() => {
                 </Table>
             </div>
         </div>
+        </BrowserRouter>
     </>
   )
 }
