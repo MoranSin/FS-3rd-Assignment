@@ -2,14 +2,10 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/header/Header'
 import ButtonList from "./components/ButtonList/ButtonList.jsx";
-// import ReportsCon from "./components/reportsCon/reportsCon.jsx";
 import 'semantic-ui-css/semantic.min.css'
 import reportsServices from "./services/reportsServices.js";
 import {Table} from "semantic-ui-react";
-import Report from "./components/Report/Report.jsx";
 import './components/reportsCon/reportsCon.css'
-import deleteButton from "./components/deleteButton/deleteButton.jsx";
-import updateButton from "./components/updateButton/updateButton.jsx";
 import { Link, BrowserRouter } from 'react-router-dom';
 import UpdateReport from "./components/updateButton/update.jsx";
 
@@ -69,11 +65,10 @@ useEffect(() => {
                                     <Table.Cell className="location">{report.location}</Table.Cell>
                                     <Table.Cell className="deathCount">{report.deathCount}</Table.Cell>
                                     <Table.Cell className="damage">{report.damage}</Table.Cell>
-                                    <Link to="/update">
+                                    {/*<Link to="/update">*/}
                                     <Table.Cell className="update">
-                                        <button onClick={()=>setReport(report._id,report)}>update</button>
+                                        <UpdateReport onClick={()=>setReport(report._id,report)}/>
                                     </Table.Cell>
-                                    </Link>
                                     <Table.Cell onClick={() => onDelete(report._id)} className="delete"><button>delete</button></Table.Cell>
                                 </Table.Row>
                             )

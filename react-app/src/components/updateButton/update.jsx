@@ -3,7 +3,7 @@ import { Button, Form } from 'semantic-ui-react'
 import reportsServices from "../../services/reportsServices.js";
 import { Route, Router } from 'react-router-dom';
 import '../addButton/createForm.css';
-import addIcon from "../../assets/addIcon.png";
+import updateIcon from "../../assets/addIcon.png";
 
 const Update = () => {
         const [name, setName] = useState('');
@@ -37,8 +37,6 @@ const Update = () => {
         }
 
         return(
-            <Router>
-            <Route path="/update">
             <div className="formCon">
                 <Form className="form">
                     <Form.Field>
@@ -60,8 +58,6 @@ const Update = () => {
                     <Button onClick={updateReport} type='submit'>Submit</Button>
                 </Form>
             </div>
-            </Route>
-            </Router>
         )
 }
 
@@ -72,11 +68,12 @@ class UpdateReport extends Component {
             this.update = this.update.bind(this)
         }
 
+
         update() { this.setState(prevState => ({open: !prevState.open})) }
         render() {
             return (
                 <div>
-                    <button onClick={this.update} className="crudButton btn"><img src={addIcon}/></button>
+                    <button onClick={this.update} className="crudButton btn"><img src={updateIcon}/></button>
                     {this.state.open && <Update />}
                 </div>
             )
