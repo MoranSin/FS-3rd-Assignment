@@ -4,7 +4,7 @@ import reportsServices from "../../services/reportsServices.js";
 import updateIcon from "../../assets/updateIcon.png";
 import './updateButton.css'
 
-const Update = ({ report }) => {
+const Update = ({ report, refreshReports }) => {
         const [name, setName] = useState(report.name);
         const [location, setLocation] = useState(report.location);
         const [deathCount, setDeathCount] = useState(report.deathCount);
@@ -29,6 +29,7 @@ const Update = ({ report }) => {
             })
                 .then(response => {
                     console.log(response);
+                    refreshReports();
                 })
                 .catch(error => {
                     console.error(error);

@@ -6,7 +6,6 @@ import 'semantic-ui-css/semantic.min.css'
 import reportsServices from "./services/reportsServices.js";
 import {Table} from "semantic-ui-react";
 import './components/reportsCon/reportsCon.css'
-import { Link, BrowserRouter } from 'react-router-dom';
 import UpdateReport from "./components/updateButton/update.jsx";
 
 function App() {
@@ -18,6 +17,12 @@ useEffect(() => {
     setReports(response.data)
   })
 }, [])
+
+    const refreshReports = () => {
+        reportsServices.getReports().then((response) => {
+            setReports(response.data)
+        })
+    }
 
     const setReport = (data) => {
         let {id, name, location, deathCount, damage } = data;
@@ -64,7 +69,7 @@ useEffect(() => {
                                     <Table.Cell className="deathCount">{report.deathCount}</Table.Cell>
                                     <Table.Cell className="damage">{report.damage}</Table.Cell>
                                     <Table.Cell className="update">
-                                        <UpdateReport report={report} onClick={()=>setReport(report)}/>
+                                        <UpdateReport report={report} onClick={()=>setReport(report)} refreshReports={refreshReports}/>
                                     </Table.Cell>
                                     <Table.Cell onClick={() => onDelete(report._id)} className="delete"><button>delete</button></Table.Cell>
                                 </Table.Row>
