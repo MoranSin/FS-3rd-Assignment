@@ -19,8 +19,8 @@ useEffect(() => {
   })
 }, [])
 
-    const setReport = (id,data) => {
-        let { name, location, deathCount, damage } = data;
+    const setReport = (data) => {
+        let {id, name, location, deathCount, damage } = data;
         localStorage.setItem('_id', id);
         localStorage.setItem('name', name);
         localStorage.setItem('location', location);
@@ -38,7 +38,6 @@ useEffect(() => {
 
   return (
     <>
-        <BrowserRouter>
         <Header />
         <ButtonList />
         <div className="reportsCon">
@@ -58,16 +57,14 @@ useEffect(() => {
 
                     <Table.Body>
                         {reports.map((report) => {
-                            console.log(report)
                             return (
-                                <Table.Row>
+                                <Table.Row key={report._id}>
                                     <Table.Cell className="name">{report.name}</Table.Cell>
                                     <Table.Cell className="location">{report.location}</Table.Cell>
                                     <Table.Cell className="deathCount">{report.deathCount}</Table.Cell>
                                     <Table.Cell className="damage">{report.damage}</Table.Cell>
-                                    {/*<Link to="/update">*/}
                                     <Table.Cell className="update">
-                                        <UpdateReport onClick={()=>setReport(report._id,report)}/>
+                                        <UpdateReport report={report} onClick={()=>setReport(report)}/>
                                     </Table.Cell>
                                     <Table.Cell onClick={() => onDelete(report._id)} className="delete"><button>delete</button></Table.Cell>
                                 </Table.Row>
@@ -77,7 +74,6 @@ useEffect(() => {
                 </Table>
             </div>
         </div>
-        </BrowserRouter>
     </>
   )
 }

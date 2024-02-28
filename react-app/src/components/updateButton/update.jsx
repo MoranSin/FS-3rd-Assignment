@@ -1,17 +1,16 @@
 import React, {useState, useEffect, Component} from 'react';
 import { Button, Form } from 'semantic-ui-react'
 import reportsServices from "../../services/reportsServices.js";
-import { Route, Router } from 'react-router-dom';
-import '../addButton/createForm.css';
-import updateIcon from "../../assets/addIcon.png";
+import updateIcon from "../../assets/updateIcon.png";
+import './updateButton.css'
 
-const Update = () => {
-        const [name, setName] = useState('');
-        const [location, setLocation] = useState('');
-        const [deathCount, setDeathCount] = useState(0);
-        const [damage, setDamage] = useState('');
+const Update = ({ report }) => {
+        const [name, setName] = useState(report.name);
+        const [location, setLocation] = useState(report.location);
+        const [deathCount, setDeathCount] = useState(report.deathCount);
+        const [damage, setDamage] = useState(report.damage);
 
-        const [id , setId] = useState(null);
+        const [id , setId] = useState(report._id);
 
         useEffect(() => {
             setId(localStorage.getItem('_id'))
@@ -22,7 +21,7 @@ const Update = () => {
         }, []);
 
         const updateReport = () => {
-            reportsServices.updateReport(id,{
+            reportsServices.updateReport(report._id,{
                 name: name,
                 location: location,
                 deathCount: deathCount,
@@ -37,8 +36,8 @@ const Update = () => {
         }
 
         return(
-            <div className="formCon">
-                <Form className="form">
+            <div>
+                <Form className>
                     <Form.Field>
                         <label>Name</label>
                         <input placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}/>
@@ -69,12 +68,16 @@ class UpdateReport extends Component {
         }
 
 
-        update() { this.setState(prevState => ({open: !prevState.open})) }
+        update() {
+            this.props.onClick();
+            this.setState(prevState => ({open: !prevState.open}))
+        }
+
         render() {
             return (
                 <div>
-                    <button onClick={this.update} className="crudButton btn"><img src={updateIcon}/></button>
-                    {this.state.open && <Update />}
+                    <button onClick={this.update} className="updateButton"><img className="Updateimg" src={updateIcon}/></button>
+                    {this.state.open && <Update report={this.props.report} />}
                 </div>
             )
         }
