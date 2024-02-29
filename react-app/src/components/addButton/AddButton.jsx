@@ -31,23 +31,23 @@ const Create = () => {
 return(
     <div className="formCon">
     <Form className="form">
-        <Form.Field>
-            <label>Name</label>
+        <Form.Field className="formField">
+            <label className="labelStyle">Name</label>
             <input placeholder='Name' onChange={(e) => setName(e.target.value)}/>
         </Form.Field>
-        <Form.Field>
-            <label>Location</label>
+        <Form.Field className="formField">
+            <label className="labelStyle">Location</label>
             <input placeholder='Location' onChange={(e) => setLocation(e.target.value)}/>
         </Form.Field>
-        <Form.Field>
-            <label>Death Count</label>
+        <Form.Field className="formField">
+            <label className="labelStyle">Death Count</label>
             <input placeholder='Death Count' onChange={(e) => setDeathCount(parseInt(e.target.value))}/>
         </Form.Field>
-        <Form.Field>
-            <label>Damage</label>
+        <Form.Field className="formField">
+            <label className="labelStyle">Damage</label>
             <input placeholder='Damage' onChange={(e) => setDamage(e.target.value)}/>
         </Form.Field>
-        <Button onClick={createReport} type='submit'>Submit</Button>
+        <Button className="ButtonSubmit" onClick={createReport} type='submit'>Submit</Button>
     </Form>
     </div>
 )

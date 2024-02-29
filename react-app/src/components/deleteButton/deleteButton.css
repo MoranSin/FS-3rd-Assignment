@@ -1,0 +1,19 @@
+.deleteButton{
+    background-color: #D9D9D9;
+    width: 4vw;
+    height: 8vh;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+    overflow: hidden;
+    position: relative;
+}
+
+.Deleteimg{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    index: 2;
+}

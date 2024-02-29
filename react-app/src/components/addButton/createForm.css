@@ -1,12 +1,62 @@
 .formCon{
     display: flex;
     flex-direction: row;
-    width: 80vw;
-    position: absolute;
+    width: 5vw;
+    height: 10vh;
+    position: relative;
     top: 175px;
+    right: 9vw;
+    background-color:rgb(172,158,255,0.2);
+    justify-content: center;
+    border-radius: 25px;
 }
 
 .form{
     display: flex;
     flex-direction: row;
+    gap: 58px;
+}
+
+.Form.Field{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.labelStyle{
+    font-family: Judson;
+    font-size: 20px;
+    font-weight: bold;
+    color: #150042;
+    justify-content: center;
+}
+
+input{
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+}
+
+.formField{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ButtonSubmit{
+    width: 5vw;
+    height: 5vh;
+    border-radius: 15px;
+    position: relative;
+    top: 30px;
+    border: none;
+    font-size: 20px;
+    font-family: Judson;
+}
+
+.ButtonSubmit:hover{
+    background-color: #150042;
+    color: #D9D9D9;
 }

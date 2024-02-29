@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/header/Header'
 import ButtonList from "./components/ButtonList/ButtonList.jsx";
-import 'semantic-ui-css/semantic.min.css'
+// import 'semantic-ui-css/semantic.min.css'
 import reportsServices from "./services/reportsServices.js";
-import {Table} from "semantic-ui-react";
+import {Item} from "semantic-ui-react";
 import './components/reportsCon/reportsCon.css'
 import UpdateReport from "./components/updateButton/update.jsx";
+import {Grid} from "@mui/material";
+import DeleteButton from "./components/deleteButton/deleteButton.jsx";
 
 function App() {
 const [reports, setReports] = useState([])
@@ -47,38 +49,52 @@ useEffect(() => {
         <ButtonList />
         <div className="reportsCon">
             <div className="labelsCon">
-                <Table singleLine>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell >name</Table.HeaderCell>
-                            <Table.HeaderCell >location</Table.HeaderCell>
-                            <Table.HeaderCell >death count</Table.HeaderCell>
-                            <Table.HeaderCell >damage</Table.HeaderCell>
-                            <Table.HeaderCell >update</Table.HeaderCell>
-                            <Table.HeaderCell >delete</Table.HeaderCell>
-
-                        </Table.Row>
-                    </Table.Header>
-
-                    <Table.Body>
+                <Grid container spacing={1}>
+                    <Grid item xs={6} md={2}>
+                        <Item className="label">name</Item>
+                    </Grid>
+                    <Grid item xs={6} md={2}>
+                        <Item className="label">location</Item>
+                    </Grid>
+                    <Grid item xs={6} md={2}>
+                        <Item className="label">death count</Item>
+                    </Grid>
+                    <Grid item xs={6} md={2}>
+                        <Item className="label">damage</Item>
+                    </Grid>
+                    <Grid item xs={6} md={2}>
+                        <Item className="label">update</Item>
+                    </Grid>
+                    <Grid item xs={6} md={2}>
+                        <Item className="label">delete</Item>
+                    </Grid>
+                </Grid>
+            </div>
                         {reports.map((report) => {
                             return (
-                                <Table.Row key={report._id}>
-                                    <Table.Cell className="name">{report.name}</Table.Cell>
-                                    <Table.Cell className="location">{report.location}</Table.Cell>
-                                    <Table.Cell className="deathCount">{report.deathCount}</Table.Cell>
-                                    <Table.Cell className="damage">{report.damage}</Table.Cell>
-                                    <Table.Cell className="update">
+                                <Grid className="report" key={report._id} container spacing={1}>
+                                    <Grid item xs={6} md={2}>
+                                        <Item className="reportItem">{report.name}</Item>
+                                    </Grid>
+                                    <Grid item xs={6} md={2}>
+                                        <Item className="reportItem">{report.location}</Item>
+                                    </Grid>
+                                    <Grid item xs={6} md={2}>
+                                        <Item className="reportItem">{report.deathCount}</Item>
+                                    </Grid>
+                                    <Grid item xs={6} md={2}>
+                                        <Item className="reportItem">{report.damage}</Item>
+                                    </Grid>
+                                    <Grid item xs={6} md={2}>
                                         <UpdateReport report={report} onClick={()=>setReport(report)} refreshReports={refreshReports}/>
-                                    </Table.Cell>
-                                    <Table.Cell onClick={() => onDelete(report._id)} className="delete"><button>delete</button></Table.Cell>
-                                </Table.Row>
+                                    </Grid>
+                                    <Grid item xs={6} md={2}>
+                                     <DeleteButton onClick={() => onDelete(report._id)} className="delete"></DeleteButton>
+                                    </Grid>
+                                </Grid>
                             )
                         })}
-                    </Table.Body>
-                </Table>
             </div>
-        </div>
     </>
   )
 }
