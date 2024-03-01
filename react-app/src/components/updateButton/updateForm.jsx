@@ -36,7 +36,7 @@ const Update = ({ report, refreshReports }) => {
     }
 
     const isFormValid = () => {
-        return name || location || deathCount || damage;
+        return !name || !location || !deathCount || !damage;
     }
 
     return (
