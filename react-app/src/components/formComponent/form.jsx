@@ -46,7 +46,7 @@ const FormComponent = ({ report, refreshReports, isUpdate }) => {
 
     return (
         <div className="formCon">
-            <Form className="form">
+            <Form className="form" onSubmit={handleSubmit}>
                 <Form.Field className="formField">
                     <label className="labelStyle">Name</label>
                     <input placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}/>

@@ -11,6 +11,26 @@ import DeleteButton from "./components/deleteButton/deleteButton.jsx";
 function App() {
 const [reports, setReports] = useState([])
 
+    const [formIsOpen, setFormIsOpen] = useState(false)
+    const [openReportId, setOpenReportId] = useState(null);
+const [buttonClicked, setButtonClicked] = useState(false)
+
+    const handleClick = () => {
+        setButtonClicked(true)
+    }
+
+    const openForm = (id) => {
+        setFormIsOpen(true)
+        setOpenReportId(id)
+    }
+
+    const closeForm = () => {
+        setFormIsOpen(false)
+        setOpenReportId(null)
+    }
+
+
+
 useEffect(() => {
 
     reportsServices.getReports().then((response) => {
@@ -45,7 +65,7 @@ useEffect(() => {
     <>
         <Header />
         <ButtonList />
-        <div className="reportsCon">
+        <div className={`reportsCon ${buttonClicked ? 'buttonClicked' : ''}`} >
             <div className="labelsCon">
                 <Grid container spacing={1}>
                     <Grid item xs={6} md={2}>
@@ -70,7 +90,7 @@ useEffect(() => {
             </div>
                         {reports.map((report) => {
                             return (
-                                <Grid className="report" key={report._id} container spacing={1}>
+                                <Grid className="report" key={report._id}  container spacing={1}>
                                     <Grid item xs={6} md={2}>
                                         <Item className="reportItem">{report.name}</Item>
                                     </Grid>
@@ -84,7 +104,7 @@ useEffect(() => {
                                         <Item className="reportItem">{report.damage}</Item>
                                     </Grid>
                                     <Grid item xs={6} md={2}>
-                                        <UpdateReport report={report} onClick={()=>setReport(report)} refreshReports={refreshReports}/>
+                                        <UpdateReport formisOpen={formIsOpen} openReportId={openReportId} closeForm={closeForm} openForm={openForm} report={report} onClick={()=>{setReport(report);}} refreshReports={refreshReports}/>
                                     </Grid>
                                     <Grid item xs={6} md={2}>
                                      <DeleteButton onClick={() => onDelete(report._id)} className="delete"></DeleteButton>

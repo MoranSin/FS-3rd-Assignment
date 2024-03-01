@@ -4,6 +4,7 @@
     background-color: rgba(25, 8, 131, 0.2);
     border-radius: 25px;
     position: relative;
+    /*top: 50px;*/
     left: 175px;
     display: flex;
     flex-direction: column;
@@ -46,4 +47,18 @@
     font-size: 20px;
     font-weight: bold;
     color: #150042;
+}
+
+.buttonClicked {
+    transform: translateY(50px);
+}
+
+.buttonList{
+    display: flex;
+    width: 100%;
+    gap: 55px;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    bottom: 10vh;
 }

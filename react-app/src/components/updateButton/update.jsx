@@ -13,10 +13,21 @@ class UpdateReport extends Component {
         }
 
 
-        update() {
-            this.props.onClick();
+        // update() {
+        //     if(!this.props.formisOpen){
+        //         this.props.openForm()
+        //         this.setState(prevState => ({open: !prevState.open}))
+        //     }else{
+        //         this.setState(prevState => ({open: !prevState.open}))
+        //         this.props.closeForm()
+        //     }
+        // }
+    update() {
+        if(!this.props.formIsOpen) {
+            this.props.openForm(this.props.report._id)
             this.setState(prevState => ({open: !prevState.open}))
         }
+    }
 
         render() {
             return (

@@ -13,6 +13,7 @@ const Create = () => {
     const [deathCount, setDeathCount] = useState(0);
     const [damage, setDamage] = useState('');
 
+
     const createReport = () => {
         reportsServices.createReport({
             name: name,
@@ -28,6 +29,9 @@ const Create = () => {
             });
     }
 
+    const isFormValid = () => {
+        return name !=='' && location !=='' && deathCount!== 0 && damage!== '';
+    }
 return(
     <div className="formCon">
     <Form className="form">
@@ -47,7 +51,7 @@ return(
             <label className="labelStyle">Damage</label>
             <input placeholder='Damage' onChange={(e) => setDamage(e.target.value)}/>
         </Form.Field>
-        <Button className="ButtonSubmit" onClick={createReport} type='submit'>Submit</Button>
+        <Button className="ButtonSubmit" onClick={createReport} type='submit' disabled={!isFormValid()}>Submit</Button>
     </Form>
     </div>
 )
@@ -63,7 +67,7 @@ class AddButton extends Component {
     render() {
         return (
         <div>
-        <button onClick={this.create} className="crudButton btn"><img src={addIcon}/></button>
+        <button onClick={this.create} className="crudButton btn"><img src={addIcon} /></button>
         {this.state.open && <Create />}
         </div>
         )

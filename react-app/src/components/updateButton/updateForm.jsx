@@ -35,6 +35,10 @@ const Update = ({ report, refreshReports }) => {
             });
     }
 
+    const isFormValid = () => {
+        return name || location || deathCount || damage;
+    }
+
     return (
         <div className="formCon">
             <Form className="form">
@@ -48,13 +52,13 @@ const Update = ({ report, refreshReports }) => {
                 </Form.Field>
                 <Form.Field className="formField">
                     <label className="labelStyle">Death Count</label>
-                <input placeholder='Death Count' value={deathCount} onChange={(e) => setDeathCount(parseInt(e.target.value))}/>
+                <input placeholder='Death Count' type='number' value={deathCount} onChange={(e) => setDeathCount(parseInt(e.target.value))}/>
                 </Form.Field>
                 <Form.Field className="formField">
                     <label className="labelStyle">Damage</label>
                 <input placeholder='Damage' value={damage} onChange={(e) => setDamage(e.target.value)}/>
                 </Form.Field>
-            <Button className="ButtonSubmit" onClick={updateReport} type='submit'>Submit</Button>
+            <Button className="ButtonSubmit" onClick={updateReport} type='submit' disabled={isFormValid()}>Submit</Button>
             </Form>
         </div>
     )
