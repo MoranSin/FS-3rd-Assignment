@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/header/Header'
 import ButtonList from "./components/ButtonList/ButtonList.jsx";
-// import 'semantic-ui-css/semantic.min.css'
 import reportsServices from "./services/reportsServices.js";
 import {Item} from "semantic-ui-react";
-import './components/reportsCon/reportsCon.css'
 import UpdateReport from "./components/updateButton/update.jsx";
 import {Grid} from "@mui/material";
 import DeleteButton from "./components/deleteButton/deleteButton.jsx";

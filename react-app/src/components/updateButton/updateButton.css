@@ -17,15 +17,3 @@
     position: relative;
     index: 2;
 }
-
-.formCon{
-    display: flex;
-    flex-direction: row;
-    width: 80vw;
-    position: absolute;
-}
-
-.form{
-    display: flex;
-    flex-direction: row;
-}

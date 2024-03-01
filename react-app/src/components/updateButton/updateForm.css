@@ -1,11 +1,11 @@
 .formCon{
     display: flex;
     flex-direction: row;
-    width: 5vw;
-    height: 10vh;
-    position: relative;
-    top: 175px;
-    /*right: 9vw;*/
+    width: 70vw;
+    height: 15vh;
+    position: fixed;
+    top: 40vh;
+    right: 30vh;
     background-color:rgb(172,158,255,0.2);
     justify-content: center;
     border-radius: 25px;
@@ -50,7 +50,7 @@ input{
     height: 5vh;
     border-radius: 15px;
     position: relative;
-    top: 30px;
+    top: 50px;
     border: none;
     font-size: 20px;
     font-family: Judson;
