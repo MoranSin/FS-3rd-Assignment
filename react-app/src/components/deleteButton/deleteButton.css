@@ -11,6 +11,12 @@
     position: relative;
 }
 
+.deleteButton:hover{
+    background-color: #150042;
+    color: #D9D9D9;
+    transition: 0.5s;
+}
+
 .Deleteimg{
     width: 40px;
     height: 40px;

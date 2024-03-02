@@ -7,3 +7,10 @@
     position: relative;
     bottom: 10vh;
 }
+
+.buttonList .crudButton:hover{
+    background-color: #150042;
+    color: #D9D9D9;
+    transition: 0.5s;
+}
+

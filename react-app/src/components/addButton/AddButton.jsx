@@ -6,7 +6,7 @@ import { Button, Form } from 'semantic-ui-react'
 import reportsServices from "../../services/reportsServices.js";
 
 
-const Create = () => {
+const Create = ({onOpenForm}) => {
 
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
@@ -15,6 +15,7 @@ const Create = () => {
 
 
     const createReport = () => {
+        onOpenForm(true);
         reportsServices.createReport({
             name: name,
             location: location,
@@ -23,9 +24,11 @@ const Create = () => {
         })
             .then(response => {
                 console.log(response);
+                onOpenForm(false);
             })
             .catch(error => {
                 console.error(error);
+                onOpenForm(false);
             });
     }
 
@@ -63,7 +66,9 @@ class AddButton extends Component {
         this.create = this.create.bind(this)
     }
 
-    create() { this.setState(prevState => ({open: !prevState.open})) }
+    create() { this.setState(prevState => ({open: !prevState.open}))
+    this.props.onFormOpen(!this.state.open);
+    }
     render() {
         return (
         <div>

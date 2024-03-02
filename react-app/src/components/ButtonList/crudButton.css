@@ -13,36 +13,10 @@
 
 crudButton:hover{
     background-color: #150042;
-    /*color: #D9D9D9;*/
+    color: #D9D9D9;
+    transition: 0.5s;
 }
 
-/*.crudButton::before{*/
-/*    content: '';*/
-/*    position: relative;*/
-/*    width: 100%;*/
-/*    height: 0%;*/
-/*    background: #150042;*/
-/*    left: 0;*/
-/*    z-index: 1;*/
-/*    transition: 0.5s;*/
-/*}*/
-
-/*.btn{*/
-/*    color: #150042;*/
-/*}*/
-
-/*.btn:hover{*/
-/*    color:#D9D9D9;*/
-/*}*/
-
-/*.btn::before{*/
-/*    top: 0;*/
-/*    border-radius: 0 0 50% 50%;*/
-/*}*/
-
-/*.btn:hover::before{*/
-/*    height: 180%;*/
-/*}*/
 
 img{
     width: 80px;
