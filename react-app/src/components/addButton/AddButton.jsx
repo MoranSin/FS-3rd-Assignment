@@ -6,7 +6,7 @@ import { Button, Form } from 'semantic-ui-react'
 import reportsServices from "../../services/reportsServices.js";
 
 
-const Create = ({onOpenForm}) => {
+const Create = () => {
 
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
@@ -15,7 +15,6 @@ const Create = ({onOpenForm}) => {
 
 
     const createReport = () => {
-        onOpenForm(true);
         reportsServices.createReport({
             name: name,
             location: location,
@@ -24,11 +23,9 @@ const Create = ({onOpenForm}) => {
         })
             .then(response => {
                 console.log(response);
-                onOpenForm(false);
             })
             .catch(error => {
                 console.error(error);
-                onOpenForm(false);
             });
     }
 

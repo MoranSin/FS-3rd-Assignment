@@ -20,7 +20,7 @@ const Update = ({ report, refreshReports }) => {
     }, []);
 
     const updateReport = () => {
-        reportsServices.updateReport(report._id,{
+        reportsServices.updateReport(id,{
             name: name,
             location: location,
             deathCount: deathCount,

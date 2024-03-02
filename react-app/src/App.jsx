@@ -6,29 +6,12 @@ import reportsServices from "./services/reportsServices.js";
 import {Item} from "semantic-ui-react";
 import UpdateReport from "./components/updateButton/update.jsx";
 import {Grid} from "@mui/material";
+import deleteIcon from './assets/deleteIcon.png'
 import DeleteButton from "./components/deleteButton/deleteButton.jsx";
 // import { BrowserRouter as Router , Route , Switch } from "react-router-dom";
 
 function App() {
 const [reports, setReports] = useState([])
-
-    const [formIsOpen, setFormIsOpen] = useState(false)
-    const [openReportId, setOpenReportId] = useState(null);
-const [buttonClicked, setButtonClicked] = useState(false)
-
-    const handleClick = () => {
-        setButtonClicked(true)
-    }
-
-    const openForm = (id) => {
-        setFormIsOpen(true)
-        setOpenReportId(id)
-    }
-
-    const closeForm = () => {
-        setFormIsOpen(false)
-        setOpenReportId(null)
-    }
 
 
 
@@ -36,13 +19,17 @@ useEffect(() => {
 
     reportsServices.getReports().then((response) => {
     setReports(response.data)
-  })
+  }).catch(error => {
+            console.error(error);
+        });
 }, [])
 
     const refreshReports = () => {
         reportsServices.getReports().then((response) => {
             setReports(response.data)
-        })
+        })            .catch(error => {
+            console.error(error);
+        });
     }
 
     const setReport = (data) => {
@@ -55,18 +42,23 @@ useEffect(() => {
     }
 
     const onDelete = (id) => {
+    console.log(id)
         reportsServices.deleteReport(id).then(() => {
             reportsServices.getReports().then((response) => {
                 setReports(response.data)
-            })
-        })
+            })            .catch(error => {
+                console.error(error);
+            });
+        })            .catch(error => {
+            console.error(error);
+        });
     }
 
   return (
     <>
         <Header />
         <ButtonList />
-        <div className={`reportsCon ${buttonClicked ? 'buttonClicked' : ''}`} >
+        <div className='reportsCon' >
             <div className="labelsCon">
                 <Grid container spacing={1}>
                     <Grid item xs={6} md={2}>
@@ -105,10 +97,10 @@ useEffect(() => {
                                         <Item className="reportItem">{report.damage}</Item>
                                     </Grid>
                                     <Grid item xs={6} md={2}>
-                                        <UpdateReport formisOpen={formIsOpen} openReportId={openReportId} closeForm={closeForm} openForm={openForm} report={report} onClick={()=>{setReport(report);}} refreshReports={refreshReports}/>
+                                        <UpdateReport report={report} onClick={()=>setReport(report)} refreshReports={refreshReports}/>
                                     </Grid>
                                     <Grid item xs={6} md={2}>
-                                     <DeleteButton onClick={() => onDelete(report._id)} className="delete"></DeleteButton>
+                                        <button onClick={() => onDelete(report._id)} className="deleteButton"><img className="Deleteimg" src={deleteIcon}/></button>
                                     </Grid>
                                 </Grid>
                             )
