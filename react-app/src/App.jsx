@@ -7,16 +7,11 @@ import {Item} from "semantic-ui-react";
 import UpdateReport from "./components/updateButton/update.jsx";
 import {Grid} from "@mui/material";
 import deleteIcon from './assets/deleteIcon.png'
-import DeleteButton from "./components/deleteButton/deleteButton.jsx";
-// import { BrowserRouter as Router , Route , Switch } from "react-router-dom";
 
 function App() {
 const [reports, setReports] = useState([])
 
-
-
 useEffect(() => {
-
     reportsServices.getReports().then((response) => {
     setReports(response.data)
   }).catch(error => {
@@ -24,13 +19,6 @@ useEffect(() => {
         });
 }, [])
 
-    const refreshReports = () => {
-        reportsServices.getReports().then((response) => {
-            setReports(response.data)
-        })            .catch(error => {
-            console.error(error);
-        });
-    }
 
     const setReport = (data) => {
         let {id, name, location, deathCount, damage } = data;
@@ -42,7 +30,6 @@ useEffect(() => {
     }
 
     const onDelete = (id) => {
-    console.log(id)
         reportsServices.deleteReport(id).then(() => {
             reportsServices.getReports().then((response) => {
                 setReports(response.data)
@@ -82,8 +69,10 @@ useEffect(() => {
                 </Grid>
             </div>
                         {reports.map((report) => {
+                            console.log(report)
                             return (
-                                <Grid className="report" key={report._id}  container spacing={1}>
+
+                                <Grid className="report" key={report._id} container spacing={1}>
                                     <Grid item xs={6} md={2}>
                                         <Item className="reportItem">{report.name}</Item>
                                     </Grid>
@@ -97,7 +86,7 @@ useEffect(() => {
                                         <Item className="reportItem">{report.damage}</Item>
                                     </Grid>
                                     <Grid item xs={6} md={2}>
-                                        <UpdateReport report={report} onClick={()=>setReport(report)} refreshReports={refreshReports}/>
+                                        <UpdateReport report={report} onClick={()=>setReport(report)}/>
                                     </Grid>
                                     <Grid item xs={6} md={2}>
                                         <button onClick={() => onDelete(report._id)} className="deleteButton"><img className="Deleteimg" src={deleteIcon}/></button>

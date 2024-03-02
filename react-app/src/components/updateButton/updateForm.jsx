@@ -3,13 +3,12 @@ import reportsServices from "../../services/reportsServices.js";
 import {Button, Form} from "semantic-ui-react";
 import './updateForm.css'
 
-const Update = ({ report, refreshReports }) => {
-    const [name, setName] = useState(report.name);
-    const [location, setLocation] = useState(report.location);
-    const [deathCount, setDeathCount] = useState(report.deathCount);
-    const [damage, setDamage] = useState(report.damage);
-
-    const [id , setId] = useState(report._id);
+const Update = ({ report }) => {
+    const [name, setName] = useState(report.name ? report.name : '');
+    const [location, setLocation] = useState(report.location ? report.location : '');
+    const [deathCount, setDeathCount] = useState(report.deathCount ? report.deathCount : 0);
+    const [damage, setDamage] = useState(report.damage ? report.damage : '');
+    const [id , setId] = useState(report ? report._id : '');
 
     useEffect(() => {
         setId(localStorage.getItem('_id'))
@@ -17,7 +16,7 @@ const Update = ({ report, refreshReports }) => {
         setLocation(localStorage.getItem('location'))
         setDeathCount(localStorage.getItem('deathCount'))
         setDamage(localStorage.getItem('damage'))
-    }, []);
+    }, [report]);
 
     const updateReport = () => {
         reportsServices.updateReport(id,{
@@ -28,7 +27,6 @@ const Update = ({ report, refreshReports }) => {
         })
             .then(response => {
                 console.log(response);
-                refreshReports();
             })
             .catch(error => {
                 console.error(error);
